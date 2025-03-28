@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Outlet, Route, useNavigate } from 'react-router-dom';
+import ProfileContext from '../context/ProfileContext';
 
 const PublicRoute = () => {
-    const profile  = false;
+  const {profile}  =  useContext(ProfileContext)
     const navigate = useNavigate()
     useEffect(()=>{
 

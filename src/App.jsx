@@ -8,13 +8,16 @@ import PrivateRoute from "./components/PrivateRoute"
 import PublicRoute from "./components/PublicRoute"
 import Home from "./pages/Home"
 import SignIn from "./pages/SignIn"
+import { ProfileProvider } from "./context/ProfileContext";
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
      Hello
      {/* <Navbar /> */}
+     <ProfileProvider >
+
       <Routes>
         <Route path="/signin" element={<SignIn />} />
         {/* <Route path="/about" element={<About />} />
@@ -26,6 +29,7 @@ function App() {
             <Route path="/" element={<Home/>} />
         </Route>
       </Routes>
+     </ProfileProvider>
     </>
   )
 }
