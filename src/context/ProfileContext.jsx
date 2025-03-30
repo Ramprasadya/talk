@@ -4,7 +4,7 @@ import { createContext } from "react";
 
  export  const ProfileProvider =({children})=>{
     const profile = false ;
-    return (
+    return ( 
         <ProfileContext.Provider value={profile} >
             {children}
         </ProfileContext.Provider>
