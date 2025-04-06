@@ -1,26 +1,23 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { Firestore, getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase } from "firebase/database"; // ✅ import Realtime Database
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBAMfLokfNC6Hx4oJYCHK4Q7pfeIQse9dA",
-  authDomain: "talk-27334.firebaseapp.com",
-  projectId: "talk-27334",
-  storageBucket: "talk-27334.firebasestorage.app",
-  messagingSenderId: "996658141695",
-  appId: "1:996658141695:web:5835a8dbedd4c2d3422fca",
-  measurementId: "G-J2XSE73V9S"
+  apiKey: "AIzaSyCSYFt9G90BP7jfAbp5UD3pqv_Icya_vGw",
+  authDomain: "chat-web-app-9baf5.firebaseapp.com",
+  databaseURL: "https://chat-web-app-9baf5-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "chat-web-app-9baf5",
+  storageBucket: "chat-web-app-9baf5.appspot.com",
+  messagingSenderId: "211901180283",
+  appId: "1:211901180283:web:b0b1c8909be7732b9ab5de"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-export const auth = getAuth(app); // ✅ correct way
+export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
-export const db =getFirestore(app);
+export const db = getDatabase(app); // ✅ use this for Realtime Database

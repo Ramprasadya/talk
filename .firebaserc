@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "talk-27334"
-  }
+    "default": "chat-web-app-9baf5"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -13,6 +13,8 @@ import GoogleIcon from "@rsuite/icons/Google";
 import "../styles/utility.scss";
 import { getAdditionalUserInfo, signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../../firebase";
+import { FirebaseError } from "firebase/app";
+import firebase from "firebase/compat/app";
 const SignIn = () => {
   const SignInWithGoogle = async () => {
     try {
@@ -23,19 +25,19 @@ const SignIn = () => {
         result.additionalUserInfo?.isNewUser;
       console.log(user);
       if (isNewUser) {
-        // await setDoc(doc(db, "users", user.uid), {
-        //   name: user.displayName,
-        //   email: user.email,
-        //   photoURL: user.photoURL,
-        //   createdAt: new Date(),
-        //   uid: user.uid,
-        // });
-
-        console.log("New user info saved to Firestore.");
+        // Save to Realtime Database
+        await set(ref(db, `profiles/${user.uid}`), {
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          createdAt: firebase.database.ServerValue.TIMESTAMP,
+          uid: user.uid,
+        });
+  
+        console.log("New user info saved to Realtime Database.");
+      } else {
+        console.log("Existing user logged in.");
       }
-      //  if(additionalUserInfo.isNewUser){
-      //   Database.ref(`/profiles/${user.uid}`)
-      //  }
     } catch (error) {
       <Message type="info">{error.message}</Message>;
     }
