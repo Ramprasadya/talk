@@ -1,23 +1,21 @@
-import React, { useContext, useEffect } from 'react'
-import { Outlet, Route, useNavigate } from 'react-router-dom';
-import ProfileContext from '../context/ProfileContext';
+import React, { useContext, useEffect } from "react";
+import { Outlet, Route, useNavigate } from "react-router-dom";
+import ProfileContext from "../context/ProfileContext";
 
 const PublicRoute = () => {
-  const {profile}  =  useContext(ProfileContext)
-    const navigate = useNavigate()
-    useEffect(()=>{
+  const { profile } = useContext(ProfileContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (profile) {
+      navigate("/");
+    }
+  }, []);
 
-        if (profile){
-            navigate("/")
-        }
-    },[])
-    
-    
   return (
-  <>
-  <Outlet />
-  </>
-  )
-}
+    <>
+      <Outlet />
+    </>
+  );
+};
 
-export default PublicRoute
+export default PublicRoute;
